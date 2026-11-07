@@ -53,3 +53,6 @@
 .sidebar .language-select-wrap select option{background:#1b2c47;color:#fff}
 .sidebar .language-chevron{position:absolute;right:12px;top:50%;transform:translateY(-50%);color:#b7c7da;pointer-events:none}
 @media(max-width:650px){.sidebar .language-control{margin:12px;padding:13px}}
+
+.employee-password-wrap{position:relative;display:flex;align-items:center;min-width:0}.employee-password-wrap input{width:100%;padding-right:94px!important;box-sizing:border-box}.employee-password-toggle{position:absolute;right:8px;top:50%;transform:translateY(-50%);border:0;background:transparent;color:#087d75;font-size:12px;font-weight:700;cursor:pointer;padding:7px}
+.employee-form{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;align-items:end}.employee-form .field{min-width:0}
