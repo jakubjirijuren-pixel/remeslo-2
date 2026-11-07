@@ -40,3 +40,8 @@
 .module-manager-footer{display:flex;align-items:center;gap:9px;padding:16px 26px;background:#fafbfd;border-top:1px solid #e7edf4;color:#8492a5;font-size:12px}
 @media(max-width:1100px){.module-manager-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:650px){.module-manager-header{padding:18px;flex-wrap:wrap}.module-manager-count{margin-left:0}.module-manager-toolbar{padding:17px;align-items:stretch}.module-manager-toolbar select{width:100%}.module-manager-hint{margin-left:0}.module-manager-grid{grid-template-columns:1fr;padding:0 16px 18px}.module-manager-section-title{padding:20px 16px 12px}.module-manager-footer{padding:15px 16px}}
+
+.language-control{padding:14px 16px;margin:10px 12px 8px;border:1px solid rgba(148,163,184,.22);border-radius:12px;display:flex;flex-direction:column;gap:9px}
+.language-control label{font-size:11px;letter-spacing:.06em;text-transform:uppercase;font-weight:700;color:#94a3b8}
+.language-control select{width:100%;padding:10px 12px;background:rgba(255,255,255,.09);color:inherit;border:1px solid rgba(148,163,184,.35);border-radius:9px;font-size:13px;cursor:pointer}
+.language-control select option{background:#fff;color:#172338}
