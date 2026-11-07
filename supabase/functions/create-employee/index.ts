@@ -11,8 +11,9 @@ Deno.serve(async req=>{
  const client=createClient(url,key,{global:{headers:{Authorization:'Bearer '+token}}});
  const {data:{user},error:authError}=await client.auth.getUser(token);
  if(authError||!user)return out({error:'Neplatné přihlášení.'},401);
- const input=await req.json(),org=String(input.organization_id||''),email=String(input.email||'').trim().toLowerCase(),password=String(input.password||''),role=String(input.role||'worker');
+ const input=await req.json(),org=String(input.organization_id||''),email=String(input.email||'').trim().toLowerCase(),password=String(input.password||''),role=String(input.role||'worker'),name=String(input.name||'').trim(),phone=String(input.phone||'').trim();
  if(!/^[0-9a-f-]{36}$/i.test(org)||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)||!['worker','viewer','accountant'].includes(role))return out({error:'Neplatné údaje.'},400);
+ if(role==='worker'&&(!name||name.length>160))return out({error:'Vyplňte jméno zaměstnance (max. 160 znaků).'},400);
  if(password.length<8||password.length>128||!/[a-z]/.test(password)||!/[A-Z]/.test(password)||!/[0-9]/.test(password))return out({error:'Heslo musí mít 8–128 znaků, velké a malé písmeno a číslici.'},400);
  const {data:allowed,error:permissionError}=await client.rpc('can_manage_employees',{org});
  if(permissionError||allowed!==true)return out({error:'Nemáte oprávnění spravovat zaměstnance této organizace.'},403);
@@ -23,6 +24,7 @@ Deno.serve(async req=>{
  if(!uid)return out({error:'Uživatel nebyl vytvořen.'},500);
  const {error:membershipError}=await admin.from('memberships').insert({organization_id:org,user_id:uid,role});
  if(membershipError){await admin.auth.admin.deleteUser(uid);return out({error:'Členství se nepodařilo uložit. Účet nebyl ponechán aktivní.'},500)}
+ if(role==='worker'){const {error:workerError}=await admin.from('workers').insert({organization_id:org,user_id:uid,name,phone:phone||null});if(workerError){await admin.from('memberships').delete().eq('organization_id',org).eq('user_id',uid);await admin.auth.admin.deleteUser(uid);return out({error:'Zaměstnance se nepodařilo vytvořit. Účet byl vrácen zpět: '+workerError.message},500)}}
  return out({ok:true,email,role,user_id:uid});
  }catch{return out({error:'Účet se nepodařilo vytvořit.'},500)}
 });
