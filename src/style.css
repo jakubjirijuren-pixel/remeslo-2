@@ -2,3 +2,5 @@
 .org-switch{padding:0 16px 17px}.org-switch label{display:block;color:#7f91ac;font-size:10px;font-weight:700;letter-spacing:1px;margin-bottom:8px}.org-switch select{width:100%;background:#20324d;color:#fff;border:1px solid #39516e;border-radius:8px;padding:10px;font-size:12px;outline-color:#1baf9d}.workspace-info{min-width:0}
 
 .employee-form{display:flex;align-items:end;flex-wrap:wrap;gap:15px;margin:20px 0 30px}.employee-form .field{flex:1;min-width:190px}.employee-form select{width:100%;border:1px solid #dfe6ee;border-radius:9px;padding:12px;background:white}.employee-form .primary{margin-bottom:0}.members-list{border-top:1px solid #e9edf4;padding-top:15px}.members-list h3{font-size:14px}.member-row{display:flex;justify-content:space-between;padding:12px;border-bottom:1px solid #eef1f6;font-size:12px}.member-row b{color:#158d7d}.success-note{padding:12px 15px;background:#e7f9f3;color:#137b60;border-radius:9px;font-size:13px}
+
+.system-organizations{margin-top:20px}.system-organizations .secondary{font-size:12px;padding:8px 12px}.system-organizations td{white-space:nowrap}
