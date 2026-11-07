@@ -13,7 +13,7 @@ Deno.serve(async req=>{
  if(authError||!user)return out({error:'Neplatné přihlášení.'},401);
  const input=await req.json(),org=String(input.organization_id||''),email=String(input.email||'').trim().toLowerCase(),password=String(input.password||''),role=String(input.role||'worker');
  if(!/^[0-9a-f-]{36}$/i.test(org)||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)||!['worker','viewer','accountant'].includes(role))return out({error:'Neplatné údaje.'},400);
- if(password.length<12||password.length>128||!/[a-z]/.test(password)||!/[A-Z]/.test(password)||!/[0-9]/.test(password))return out({error:'Heslo musí mít 12–128 znaků, velké a malé písmeno a číslici.'},400);
+ if(password.length<8||password.length>128||!/[a-z]/.test(password)||!/[A-Z]/.test(password)||!/[0-9]/.test(password))return out({error:'Heslo musí mít 8–128 znaků, velké a malé písmeno a číslici.'},400);
  const {data:allowed,error:permissionError}=await client.rpc('can_manage_employees',{org});
  if(permissionError||allowed!==true)return out({error:'Nemáte oprávnění spravovat zaměstnance této organizace.'},403);
  const admin=createClient(url,secret,{auth:{autoRefreshToken:false,persistSession:false}});
