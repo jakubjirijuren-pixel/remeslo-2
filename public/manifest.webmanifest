@@ -1,0 +1,18 @@
+{
+  "name": "Řemeslo 2.0",
+  "short_name": "Řemeslo",
+  "description": "Správa řemeslných zakázek a pracovní terminál",
+  "start_url": "/remeslo-2/",
+  "scope": "/remeslo-2/",
+  "display": "standalone",
+  "background_color": "#07111f",
+  "theme_color": "#101b30",
+  "icons": [
+    {
+      "src": "/remeslo-2/remeslo-logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
