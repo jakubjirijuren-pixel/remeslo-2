@@ -60,3 +60,50 @@
 .member-actions{display:flex;align-items:center;gap:14px}.member-remove{background:#fff2f2;border:1px solid #fecaca;border-radius:8px;color:#b42332;padding:8px 12px;cursor:pointer;font-weight:650}.member-remove:hover{background:#fee2e2}.member-row>span{overflow-wrap:anywhere}
 
 .brand-logo{display:block;object-fit:contain;flex-shrink:0;border-radius:12px}.brand-logo-auth{width:84px;height:84px;margin:0 auto 16px}.brand-logo-sidebar{width:46px;height:46px;border-radius:11px}.logo .brand-logo{box-shadow:0 5px 18px #0002}
+
+
+/* ŘEMESLO 2.0 — unified visual identity: midnight navy, amber orange, warm white */
+:root{--rm-navy:#081426;--rm-navy-2:#12243b;--rm-orange:#ff9416;--rm-orange-hover:#e97700;--rm-orange-soft:#fff2df;--rm-ink:#14243a;--rm-muted:#708198;--rm-line:#e3e8f0;--rm-canvas:#f4f6fa;--rm-surface:#fff;color:var(--rm-ink);background:var(--rm-canvas);accent-color:var(--rm-orange)}
+body{background:var(--rm-canvas);color:var(--rm-ink)}
+.sidebar{background:linear-gradient(175deg,#12243b 0%,#081426 70%,#050d19 100%);color:#c7d2e2}
+.logo span,.auth h1 span{color:#ff9b22}
+.brand-icon{background:linear-gradient(135deg,#ffac31,#f47c00);color:#101c2c}
+.workspace{background:#1b2d47;border-color:#34455c}
+.workspace-icon{background:#31445e}
+.nav-label{color:#9aaac0}
+.nav-item{color:#bdcbe0;transition:background .18s,color .18s}
+.nav-item:hover{background:#26364c;color:#fff}
+.nav-item.active{background:linear-gradient(90deg,#ff9d23 0%,#e97c05 100%);color:#111b29;box-shadow:0 5px 16px #0002}
+.nav-item.active svg{color:#111b29}
+.side-bottom{border-color:#26384f}
+.avatar{background:#fff0d9;color:#9b5100}
+.content{background:var(--rm-canvas)}
+header:not(.worker-terminal-top){background:#fff;border-bottom:1px solid var(--rm-line)}
+.breadcrumb b,.page-head h1,.panel-title h3,.stat strong{color:var(--rm-ink)}
+.eyebrow{color:#b96500}
+.page-head p,.panel-title p,.stat small,.record-count{color:var(--rm-muted)}
+.primary,.employee-form button[type=submit]{background:linear-gradient(135deg,#ffa52b,#ed8105);color:#101b2b;border:1px solid #e88108;box-shadow:0 5px 16px #ef8b1c30}
+.primary:hover,.employee-form button[type=submit]:hover{background:linear-gradient(135deg,#ffb446,#df7000)}
+.stat,.panel{background:var(--rm-surface);border-color:var(--rm-line);box-shadow:0 5px 24px #0b21340a}
+.quick{border-color:var(--rm-line);color:var(--rm-ink)}
+.quick:hover{border-color:#f6a341;background:#fffaf2}
+.quick-icon,.empty-icon{color:#ad6200;background:#fff0d9}
+.system-row{border-color:#e9edf3}
+.welcome{background:linear-gradient(115deg,#101e33,#1a304b 65%,#3e342b);border:1px solid #34455c}
+.welcome-art{color:#ffa02c;opacity:.75}
+th{background:#f5f7fa;color:#65768c}
+td{color:#293c53;border-bottom-color:var(--rm-line)}
+.auth{background:radial-gradient(circle at 72% 8%,#263a50 0%,#0e1c30 45%,#050d19 100%)}
+.auth-card{border:1px solid #e9edf3}
+input:focus,select:focus,textarea:focus{outline-color:#ff9d23}
+:where(button,a,input,select,textarea):focus-visible{outline:3px solid #f5a43e;outline-offset:2px}
+:where(.panel,.stat,.quick,.auth-card,.module-manager-card){transition:border-color .2s,box-shadow .2s}
+.module-manager-item input:checked+.module-manager-switch{background:#f29418;border-color:#f29418}
+.module-manager-item input:focus-visible+.module-manager-switch{outline-color:#f7b55a}
+.sidebar .language-select-wrap select{background:#1b2d47;border-color:#40536d}
+.sidebar .language-select-wrap select:hover{border-color:#ffa32d}
+.sidebar .language-select-wrap select:focus-visible{border-color:#ffa32d;box-shadow:0 0 0 3px #ff941633}
+.sidebar .language-select-wrap select option{background:#1b2d47}
+.employee-password-toggle{color:#b56a08}
+.online i{background:#ff9b23}
+@media(max-width:650px){.nav-item.active{box-shadow:none}.welcome{background:linear-gradient(130deg,#111f34,#29374a)}}
