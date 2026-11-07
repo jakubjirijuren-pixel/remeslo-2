@@ -58,3 +58,5 @@
 .employee-form{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;align-items:end}.employee-form .field{min-width:0}
 
 .member-actions{display:flex;align-items:center;gap:14px}.member-remove{background:#fff2f2;border:1px solid #fecaca;border-radius:8px;color:#b42332;padding:8px 12px;cursor:pointer;font-weight:650}.member-remove:hover{background:#fee2e2}.member-row>span{overflow-wrap:anywhere}
+
+.brand-logo{display:block;object-fit:contain;flex-shrink:0;border-radius:12px}.brand-logo-auth{width:84px;height:84px;margin:0 auto 16px}.brand-logo-sidebar{width:46px;height:46px;border-radius:11px}.logo .brand-logo{box-shadow:0 5px 18px #0002}
