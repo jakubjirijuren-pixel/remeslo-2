@@ -1,12 +1,12 @@
 import { createClient } from 'npm:@supabase/supabase-js@2.57.0';
-const cors={'Access-Control-Allow-Origin':'https://jakubjirijuren-pixel.github.io','Access-Control-Allow-Headers':'authorization,apikey,content-type','Access-Control-Allow-Methods':'POST,OPTIONS'};
+const cors={'Access-Control-Allow-Origin':'https://jakubjirijuren-pixel.github.io','Access-Control-Allow-Headers':'authorization,apikey,content-type,x-client-info','Access-Control-Allow-Methods':'POST,OPTIONS'};
 const respond=(data,status=200)=>new Response(JSON.stringify(data),{status,headers:{...cors,'Content-Type':'application/json'}});
 Deno.serve(async(req)=>{
- if(req.method==='OPTIONS')return new Response(null,{headers:cors});
+ if(req.method==='OPTIONS')return new Response(null,{status:204,headers:cors});
  if(req.method!=='POST')return respond({error:'Method not allowed'},405);
  try{
   const url=Deno.env.get('SUPABASE_URL')!;
-  const pub=Deno.env.get('SUPABASE_ANON_KEY')!;
+  const pub=Deno.env.get('SUPABASE_ANON_KEY')||Deno.env.get('SUPABASE_PUBLISHABLE_KEY')!;
   const secret=Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
   const token=req.headers.get('authorization')?.replace(/^Bearer\s+/i,'');
   if(!token)return respond({error:'Přihlášení je povinné.'},401);
@@ -25,7 +25,7 @@ Deno.serve(async(req)=>{
   if(inviteError)return respond({error:inviteError.message},400);
   const invitedId=invite.user?.id;
   if(!invitedId)return respond({error:'Pozvánka nevrátila uživatele.'},500);
-  const {error:membershipError}=await admin.from('memberships').insert({organization_id,user_id:invitedId,role});
+  const {error:membershipError}=await admin.from('memberships').upsert({organization_id,user_id:invitedId,role},{onConflict:'organization_id,user_id'});
   if(membershipError)return respond({error:'Účet byl pozván, ale nepodařilo se přidat členství. Kontaktujte správce.'},500);
   return respond({ok:true,email,role});
  }catch(e){return respond({error:'Pozvánku se nepodařilo odeslat.'},500)}
